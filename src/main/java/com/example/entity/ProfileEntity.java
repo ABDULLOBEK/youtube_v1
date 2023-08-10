@@ -3,9 +3,7 @@ package com.example.entity;
 import com.example.entity.Base.IntegerBaseEntity;
 import com.example.enums.ProfileRole;
 import com.example.enums.ProfileStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +23,12 @@ public class ProfileEntity extends IntegerBaseEntity {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "photo_id", nullable = false)
+    private String photoId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
+    private AttachEntity photo;
 
     @Column(name = "status")
     private ProfileStatus status;

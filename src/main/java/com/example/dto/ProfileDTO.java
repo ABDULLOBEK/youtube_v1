@@ -25,10 +25,14 @@ public class ProfileDTO {
     private String email;
     @NotBlank(message = "Password required")
     private String password;
+
 //    @NotBlank(message = "Photo required")
     private AttachDTO photo;
+    private Integer photoId;
+
     @NotNull
     private ProfileRole role;
     @NotNull
     private ProfileStatus status;
+    private LocalDateTime createdDate;
 }
