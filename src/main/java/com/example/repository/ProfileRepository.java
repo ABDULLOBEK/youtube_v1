@@ -1,0 +1,1 @@
+package com.example.repository;import org.springframework.data.jpa.repository.JpaRepository;import com.example.entity.ProfileEntity;public interface ProfileRepository extends JpaRepository<ProfileEntity, Integer> {    void findByEmail(String email);}
