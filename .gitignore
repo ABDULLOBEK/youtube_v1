@@ -34,3 +34,4 @@ build/
 /src/main/resources/text
 /src/main/resources/application-abdullo.properties
 /src/main/resources/application-urazgali.properties
+/src/main/resources/application-dev.properties
