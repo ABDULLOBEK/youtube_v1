@@ -7,6 +7,7 @@ import com.example.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,14 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("")
     public ResponseEntity<?> create(@RequestBody TagDTO dto){
         TagDTO response = tagService.add(dto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> put(@RequestBody TagDTO dto,
                                  @PathVariable("id") Integer id){
@@ -30,6 +33,7 @@ public class TagController {
         return ResponseEntity.ok(true);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         String  response = tagService.delete(id);
@@ -39,6 +43,7 @@ public class TagController {
         return ResponseEntity.badRequest().body("Tag not found");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/all")
     public List<TagDTO> all(){
         return tagService.getAll();

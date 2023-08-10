@@ -6,6 +6,7 @@ import com.example.service.EmailHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,19 +20,20 @@ public class EmailHistoryController {
     2. Get Email pagination by email
     3. filter (email,created_date) + with pagination*/
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(value = "/pagination")
     public ResponseEntity<?> pagination(@RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "size", defaultValue = "10") int size) {
 
         return ResponseEntity.ok(emailHistoryService.pagination(page - 1, size));
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(value = "/paginationByEmail")
     public ResponseEntity<?> paginationByPrice(@RequestParam(value = "page", defaultValue = "1") int page,
                                                @RequestParam(value = "size", defaultValue = "10") int size, String email) {
         return ResponseEntity.ok(emailHistoryService.paginationByEmail(page - 1, size, email));
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(value = "/filter")
     public ResponseEntity<PageImpl<EmailHistoryDTO>> filter(@RequestParam(value = "page", defaultValue = "1") int page,
                                                         @RequestParam(value = "size", defaultValue = "10") int size,
