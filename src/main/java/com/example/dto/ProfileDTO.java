@@ -20,6 +20,7 @@ public class ProfileDTO {
     @NotBlank(message = "Name required")
     private String name;
     private String surname;
+    //
 
     @Email(message = "Email required")
     private String email;
