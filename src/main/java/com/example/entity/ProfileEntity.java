@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import com.example.entity.Base.IntegerBaseEntity;
 import com.example.enums.ProfileRole;
 import com.example.enums.ProfileStatus;
 import jakarta.persistence.Column;
@@ -12,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "profile")
-public class ProfileEntity extends IntegerBaseEntity{
+public class ProfileEntity extends IntegerBaseEntity {
     @Column(name = "name")
     private String name;
 
