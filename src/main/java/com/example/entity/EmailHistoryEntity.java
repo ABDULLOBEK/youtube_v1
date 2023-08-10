@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import com.example.entity.Base.IntegerBaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +11,8 @@ import java.time.LocalDateTime;
 @Table(name = "email_history")
 @Getter
 @Setter
-public class EmailHistoryEntity {
+public class EmailHistoryEntity extends IntegerBaseEntity {
 //    id, to_email, title, message, created_date
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @Column(name = "to_email")
     private String toEmail;
@@ -25,8 +23,6 @@ public class EmailHistoryEntity {
     @Column(name = "message")
     private String message;
 
-    @Column(name = "crated_date")
-    private LocalDateTime createdDate=LocalDateTime.now();
 
 
 }

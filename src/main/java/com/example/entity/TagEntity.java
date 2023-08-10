@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import com.example.entity.Base.IntegerBaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,17 +11,8 @@ import java.time.LocalDateTime;
 @Table(name = "tag")
 @Getter
 @Setter
-public class TagEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class TagEntity extends IntegerBaseEntity {
 
     @Column(name = "name")
     private String name;
-
-    @Column(name = "visible")
-    private Boolean visible=Boolean.TRUE;
-
-    @Column(name = "crated_date")
-    private LocalDateTime createdDate=LocalDateTime.now();
 }
