@@ -30,9 +30,11 @@ public class ProfileEntity extends IntegerBaseEntity {
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
     private AttachEntity photo;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ProfileStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
 }
