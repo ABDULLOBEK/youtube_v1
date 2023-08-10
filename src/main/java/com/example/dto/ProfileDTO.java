@@ -20,7 +20,6 @@ public class ProfileDTO {
     @NotBlank(message = "Name required")
     private String name;
     private String surname;
-    //
 
     @Email(message = "Email required")
     private String email;
@@ -30,6 +29,6 @@ public class ProfileDTO {
     private AttachDTO photo;
     @NotNull
     private ProfileRole role;
-    private ProfileStatus status;//
-    private LocalDateTime createdDate;
+    @NotNull
+    private ProfileStatus status;
 }
