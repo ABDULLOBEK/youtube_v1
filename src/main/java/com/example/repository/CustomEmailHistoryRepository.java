@@ -1,21 +1,23 @@
 package com.example.repository;
 
 import com.example.dto.EmailHistoryFilterDTO;
+import com.example.dto.FilterResultDTO;
 import com.example.entity.EmailHistoryEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public class CustomEmailHistoryRepository {
     @Autowired
     private EntityManager entityManager;
 
 
-    public List<EmailHistoryEntity> filter(EmailHistoryFilterDTO filterDTO, Integer page,Integer size) {
+    public FilterResultDTO<EmailHistoryEntity> filter(EmailHistoryFilterDTO filterDTO, Integer page, Integer size) {
         StringBuilder selectQueryBuilder = new StringBuilder("select c from EmailHistoryEntity as c where 1=1 ");
         StringBuilder countQueryBuilder = new StringBuilder("select count(s) from EmailHistoryEntity as s where 1=1");
         StringBuilder whereQuery = new StringBuilder();
@@ -54,7 +56,7 @@ public class CustomEmailHistoryRepository {
         List<EmailHistoryEntity> entityList = selectQuery.getResultList();
         Long totalCount = (Long) countQuery.getSingleResult();
 
-        return entityList;
+        return new FilterResultDTO<>(entityList, totalCount);
     }
 
 }

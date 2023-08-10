@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dto.CategoryDTO;
 import com.example.dto.EmailHistoryDTO;
 import com.example.dto.EmailHistoryFilterDTO;
+import com.example.dto.FilterResultDTO;
 import com.example.entity.CategoryEntity;
 import com.example.entity.EmailHistoryEntity;
 import com.example.exp.ItemNotFoundException;
@@ -41,14 +42,11 @@ public class EmailHistoryService {
         return new PageImpl<>(studentDTOList, pageable, pageObj.getTotalElements());
     }
 
-    public List<EmailHistoryDTO> filter(EmailHistoryFilterDTO filterDTO){
-        if(filterDTO.getCreatedDateFrom()!=null || filterDTO.getCreatedDateTo()!=null) {
-            LocalDateTime from = LocalDateTime.of(filterDTO.getCreatedDateFrom().toLocalDate(), LocalTime.MIN);
-            LocalDateTime to = LocalDateTime.of(filterDTO.getCreatedDateTo().toLocalDate(), LocalTime.MAX);
-            filterDTO.setCreatedDateTo(to);
-            filterDTO.setCreatedDateFrom(from);
-        }
-        return getCourseDTOS(customEmailHistoryRepository.filter(filterDTO));
+    public PageImpl<EmailHistoryDTO> filter(EmailHistoryFilterDTO filterDTO, int page, int size) {
+        FilterResultDTO<EmailHistoryEntity> result = customEmailHistoryRepository.filter(filterDTO, page, size);
+        List<EmailHistoryDTO> studentDTOList = result.getContent().stream()
+                .map(this::toDTO).collect(Collectors.toList());
+        return new PageImpl<>(studentDTOList, PageRequest.of(page, size), result.getTotalCount());
     }
 
     private EmailHistoryDTO toDTO(EmailHistoryEntity entity) {

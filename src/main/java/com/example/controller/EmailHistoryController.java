@@ -4,6 +4,7 @@ import com.example.dto.EmailHistoryDTO;
 import com.example.dto.EmailHistoryFilterDTO;
 import com.example.service.EmailHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +33,9 @@ public class EmailHistoryController {
     }
 
     @PostMapping(value = "/filter")
-    public ResponseEntity<List<EmailHistoryDTO>> filter(@RequestBody EmailHistoryFilterDTO filterDTO){
-        List<EmailHistoryDTO> response = emailHistoryService.filter(filterDTO);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<PageImpl<EmailHistoryDTO>> filter(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                        @RequestParam(value = "size", defaultValue = "10") int size,
+                                                                    @RequestBody EmailHistoryFilterDTO filterDTO){
+        return ResponseEntity.ok(emailHistoryService.filter(filterDTO,page - 1, size));
     }
-
 }
