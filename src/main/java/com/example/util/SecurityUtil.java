@@ -20,7 +20,8 @@ public class SecurityUtil {
         if (requiredRoles == null){
             return jwtDTO;
         }
-        boolean found = false;
+        // TODO
+        /*boolean found = false;
         for (ProfileRole role : requiredRoles) {
             if (jwtDTO.getRole().equals(role)) {
                 found = true;
@@ -28,7 +29,7 @@ public class SecurityUtil {
         }
         if (!found) {
             throw new AppMethodNotAllowedException();
-        }
+        }*/
         return jwtDTO;
     }
 }
