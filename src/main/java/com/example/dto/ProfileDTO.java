@@ -29,6 +29,6 @@ public class ProfileDTO {
     private AttachDTO photo;
     @NotNull
     private ProfileRole role;
-    private ProfileStatus status;
+    private ProfileStatus status;//
     private LocalDateTime createdDate;
 }
