@@ -27,9 +27,9 @@ public class ProfileDTO {
     @NotNull(message = "Password is null!")
     private String password;
 
-//    @NotBlank(message = "Photo required")
-//    private AttachDTO photo;
-//    private Integer photoId;
+    @NotBlank(message = "Photo required")
+    private AttachDTO photo;
+    private String photoUrl;
 
     @NotNull(message = "Role is null!")
     private ProfileRole role;
