@@ -16,7 +16,6 @@ public class AttachEntity extends StringBaseEntity {
     @Column(name = "origin_name")
     private String originName;
 
-
     @Column(name = "size")
     private Long size;
 
