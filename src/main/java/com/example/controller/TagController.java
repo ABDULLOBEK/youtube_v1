@@ -34,9 +34,9 @@ public class TagController {
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         String  response = tagService.delete(id);
         if(response.length()>0){
-            return ResponseEntity.ok("Student Deleted");
+            return ResponseEntity.ok("Tag Deleted");
         }
-        return ResponseEntity.badRequest().body("Student not found");
+        return ResponseEntity.badRequest().body("Tag not found");
     }
 
     @GetMapping("/all")
