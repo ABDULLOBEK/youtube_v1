@@ -29,7 +29,7 @@ public class SpringSecurityConfig {
             /*"/api/v1/tag/**",*/
             "/api/v1/attach/**",
             "/api/v1/emailHistory/**",
-            "/api/v1/profile/**"};
+            "/api/v1/profile/open/**"};
 
    /* @Bean
     public AuthenticationProvider authenticationProvider() {

@@ -39,4 +39,7 @@ public class ProfileEntity extends IntegerBaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
+
+    @Column(name = "prtId")
+    private Integer prtId;
 }

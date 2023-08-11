@@ -54,4 +54,8 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return profile.getStatus().equals(ProfileStatus.ACTIVE);
     }
+
+    public ProfileEntity getProfile() {
+        return profile;
+    }
 }
