@@ -4,16 +4,16 @@ import java.security.MessageDigest;
 public class MD5Util {
     public static String encode(String input) {
         try {
-            MessageDigest md = MessageDigest.getInstance("D5");
+            MessageDigest md = MessageDigest.getInstance("SHA-256"); // Corrected to use SHA-256
             byte[] array = md.digest(input.getBytes());
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : array) {
+                sb.append(String.format("%02x", b)); // Corrected to format bytes as hexadecimal
             }
             return sb.toString();
         } catch (java.security.NoSuchAlgorithmException e) {
             e.printStackTrace();
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e);
         }
     }
 }

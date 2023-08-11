@@ -26,11 +26,11 @@ public class ProfileEntity extends IntegerBaseEntity {
 
     @Column(name = "photoUrl")
     private String photoUrl;
-    @Column(name = "photo_id", nullable = false)
+    @Column(name = "photo_id"/*, nullable = false*/)
     private String photoId;
-    @OneToOne(fetch = FetchType.LAZY)
+ /*   @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
-    private AttachEntity photo;
+    private AttachEntity photo;*/
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
