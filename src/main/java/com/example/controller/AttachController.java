@@ -39,8 +39,8 @@ public class AttachController {
         return attachService.download(id);
     }
 
-
-    @DeleteMapping(value = "/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping(value = "/admin/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") String id){
         ResponseEntity<?> response = attachService.delete(id);
 
@@ -52,8 +52,8 @@ public class AttachController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the image with ID " + id + ".");
         }
     }
-
-    @GetMapping(value = "/pagination")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping(value = "/admin/pagination")
     public ResponseEntity<?> pagination(@RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "size", defaultValue = "10") int size) {
 
