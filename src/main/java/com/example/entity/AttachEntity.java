@@ -3,18 +3,23 @@ package com.example.entity;
 import com.example.entity.Base.StringBaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "attach")
 @Getter
 @Setter
-public class AttachEntity extends StringBaseEntity {
+public class AttachEntity{
+    @Id
+    private String id;
 
-    @Column(name = "origin_name")
-    private String originName;
+    @Column(name = "original_name")
+    private String originalName;
 
     @Column(name = "size")
     private Long size;
@@ -27,6 +32,9 @@ public class AttachEntity extends StringBaseEntity {
 
     @Column(name = "duration")
     private String duration;
+
+    @Column(name = "created_date")
+    private LocalDateTime createdData;
 
 
 

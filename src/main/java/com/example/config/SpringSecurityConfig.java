@@ -86,7 +86,7 @@ public class SpringSecurityConfig {
         // authorization (ROLE)
         http.authorizeHttpRequests((c)->
                 c.requestMatchers(AUTH_WHITELIST).permitAll()
-                    .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
+//                    .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
                     .requestMatchers("/api/v1/profile/**").permitAll()
                         .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")
                     .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
