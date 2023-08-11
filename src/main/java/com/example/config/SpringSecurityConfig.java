@@ -27,7 +27,7 @@ public class SpringSecurityConfig {
             "/api/v1/auth/**",
             "/api/v1/category/**",
             /*"/api/v1/tag/**",*/
-            "/api/v1/attach/**",
+            /*"/api/v1/attach/**",*/
             "/api/v1/emailHistory/**",
             "/api/v1/profile/open/**"};
 
@@ -86,7 +86,8 @@ public class SpringSecurityConfig {
         // authorization (ROLE)
         http.authorizeHttpRequests((c)->
                 c.requestMatchers(AUTH_WHITELIST).permitAll()
-//                    .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
+                    .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/api/v1/attach/**").permitAll()
                     .requestMatchers("/api/v1/profile/**").permitAll()
                         .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")
                     .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
