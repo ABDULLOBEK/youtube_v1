@@ -13,5 +13,5 @@ public interface EmailHistoryRepository extends JpaRepository<EmailHistoryEntity
 //    findAllByPriceOrderByCreatedDate/**/
     Page<EmailHistoryEntity> findAllByToEmailOrderByCreatedDate(String price, Pageable pageable);
 
-    Long countAllByEmailAndCreatedDateAfter(String email, LocalDateTime localDateTime);
+    Long countAllByToEmailAndCreatedDateAfter(String email, LocalDateTime localDateTime);
 }
