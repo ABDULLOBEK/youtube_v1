@@ -1,5 +1,6 @@
 package com.example.entity;
 import com.example.entity.Base.IntegerBaseEntity;
+import com.example.entity.Base.StringBaseEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.ChannelStatus;
 import jakarta.persistence.*;
@@ -12,11 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "channel")
-public class ChannelEntity {
-
-    @Id
-    private String id;
-
+public class ChannelEntity extends StringBaseEntity {
     @Column(name = "name")
     private String name;
 
@@ -34,11 +31,11 @@ public class ChannelEntity {
     @Column(name = "status")
     private ChannelStatus status;
 
-    @Column(name = "bannerId")
+    @Column(name = "banner_id")
     private String bannerId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bannerId", insertable = false, updatable = false)
+    @JoinColumn(name = "banner_id", insertable = false, updatable = false)
     private AttachEntity banner;
 
     @Column(name = "profile_id")

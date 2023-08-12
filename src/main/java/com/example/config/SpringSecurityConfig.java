@@ -4,7 +4,6 @@ import com.example.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -84,16 +83,16 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authorization (ROLE)
-        http.authorizeHttpRequests((c)->
+        http.authorizeHttpRequests((c) ->
                 c.requestMatchers(AUTH_WHITELIST).permitAll()
-                    .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
                         .requestMatchers("/api/v1/attach/**").permitAll()
-                    .requestMatchers("/api/v1/profile/**").permitAll()
-                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")
-                    .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
-                    .requestMatchers("/api/v1/profile/**").permitAll()
-                    .anyRequest().authenticated()
-                ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+                        .requestMatchers("/api/v1/profile/**").permitAll()
+                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
+                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/profile/**").permitAll()
+                        .anyRequest().authenticated()
+        ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
         return http.build();
