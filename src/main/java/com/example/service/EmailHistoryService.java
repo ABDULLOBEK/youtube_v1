@@ -31,22 +31,22 @@ public class EmailHistoryService {
     public PageImpl<EmailHistoryDTO> pagination(int page, int size) {
         Pageable pageable = PageRequest.of(page,size, Sort.Direction.DESC, "id");
         Page<EmailHistoryEntity> pageObj = emailHistoryRepository.findAll(pageable);
-        List<EmailHistoryDTO> studentDTOList = pageObj.stream().map(this::toDTO).collect(Collectors.toList());
-        return new PageImpl<>(studentDTOList, pageable, pageObj.getTotalElements());
+        List<EmailHistoryDTO> historyDTOList = pageObj.stream().map(this::toDTO).collect(Collectors.toList());
+        return new PageImpl<>(historyDTOList, pageable, pageObj.getTotalElements());
     }
 
     public PageImpl<EmailHistoryDTO> paginationByEmail(int page, int size, String  email){
         Pageable pageable = PageRequest.of(page,size);
         Page<EmailHistoryEntity> pageObj = emailHistoryRepository.findAllByToEmailOrderByCreatedDate(email,pageable);
-        List<EmailHistoryDTO> studentDTOList = pageObj.stream().map(this::toDTO).collect(Collectors.toList());
-        return new PageImpl<>(studentDTOList, pageable, pageObj.getTotalElements());
+        List<EmailHistoryDTO> historyDTOList = pageObj.stream().map(this::toDTO).collect(Collectors.toList());
+        return new PageImpl<>(historyDTOList, pageable, pageObj.getTotalElements());
     }
 
     public PageImpl<EmailHistoryDTO> filter(EmailHistoryFilterDTO filterDTO, int page, int size) {
         FilterResultDTO<EmailHistoryEntity> result = customEmailHistoryRepository.filter(filterDTO, page, size);
-        List<EmailHistoryDTO> studentDTOList = result.getContent().stream()
+        List<EmailHistoryDTO> historyDTOList = result.getContent().stream()
                 .map(this::toDTO).collect(Collectors.toList());
-        return new PageImpl<>(studentDTOList, PageRequest.of(page, size), result.getTotalCount());
+        return new PageImpl<>(historyDTOList, PageRequest.of(page, size), result.getTotalCount());
     }
 
     private EmailHistoryDTO toDTO(EmailHistoryEntity entity) {
