@@ -26,7 +26,7 @@ public class ProfileEntity extends IntegerBaseEntity {
 
     @Column(name = "photoUrl")
     private String photoUrl;
-    @Column(name = "photo_id", nullable = false)
+    @Column(name = "photo_id")
     private String photoId;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
