@@ -11,23 +11,23 @@ import lombok.Setter;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChannelDTO {
-//    id(uuid),name,photo,description,status (ACTIVE, BLOCK),banner,profile_id
+
     private String id;
+
     @NotBlank(message = "Name required")
     private String name;
 
     @NotBlank(message = "Photo required")
-    private AttachDTO photo;
-    private String photoUrl;
+    private String photoId;
 
     @NotBlank(message = "Description required")
-    private String description; //IZOH
+    private String description;
+
     @NotNull(message = "Status is null!")
     private ChannelStatus status;
 
     @NotBlank(message = "Photo required")
-    private AttachDTO banner;
-    private String bannerUrl;
+    private String bannerId;
 
     @NotBlank(message = "Photo profile_id")
     private String profile_id;

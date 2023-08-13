@@ -1,0 +1,38 @@
+### Create channel
+POST localhost:8081/api/v1/channel
+Content-Type: application/json
+
+{
+  "name": "aaa Channel",
+  "description": "sfadf 54df5dsc dfd",
+  "photoId": "5f4f7920-8b3a-4564-826b-367330771633",
+  "bannerId": "5f4f7920-8b3a-4564-826b-367330771633"
+}
+
+### Upadte channel
+PUT localhost:8081/api/v1/channel/update/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MTkzOTQsImVtYWlsIjoibXlzaHVrdXJvdkBnbWFpbC5jb20iLCJleHAiOjE2OTE5MjI5OTQsImlzcyI6IllPVSBUVUJFIFBPUlRBTCJ9.WzbcF5XCTuSt1tbDeJWLVhLX6LXWK8OuTG6YfP6ZkRWhmNO-Yg0HsrKNrio_9VQgCtTB7GdMG9RvsmfneUeBoA
+
+{
+  "name": "Update Channel",
+  "photoId": "1734f6ea-0a0d-4937-bf62-b0914f31d116"
+}
+
+### Update Channel photo ( USER and OWNER)
+PUT localhost:8081/api/v1/channel/update/photo/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MTkzOTQsImVtYWlsIjoibXlzaHVrdXJvdkBnbWFpbC5jb20iLCJleHAiOjE2OTE5MjI5OTQsImlzcyI6IllPVSBUVUJFIFBPUlRBTCJ9.WzbcF5XCTuSt1tbDeJWLVhLX6LXWK8OuTG6YfP6ZkRWhmNO-Yg0HsrKNrio_9VQgCtTB7GdMG9RvsmfneUeBoA
+
+{
+  "photoId": "1734f6ea-0a0d-4937-bf62-b0914f31d116"
+}
+
+### Update Channel banner ( USER and OWNER)
+PUT localhost:8081/api/v1/channel/update/banner/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MTkzOTQsImVtYWlsIjoibXlzaHVrdXJvdkBnbWFpbC5jb20iLCJleHAiOjE2OTE5MjI5OTQsImlzcyI6IllPVSBUVUJFIFBPUlRBTCJ9.WzbcF5XCTuSt1tbDeJWLVhLX6LXWK8OuTG6YfP6ZkRWhmNO-Yg0HsrKNrio_9VQgCtTB7GdMG9RvsmfneUeBoA
+
+{
+  "bannerId": "1734f6ea-0a0d-4937-bf62-b0914f31d116"
+}
