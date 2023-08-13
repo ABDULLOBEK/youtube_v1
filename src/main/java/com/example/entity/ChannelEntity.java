@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "channel")
 public class ChannelEntity extends StringBaseEntity {
+
     @Column(name = "name")
     private String name;
 
@@ -29,7 +30,7 @@ public class ChannelEntity extends StringBaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private ChannelStatus status;
+    private ChannelStatus status = ChannelStatus.ACTIVE;
 
     @Column(name = "banner_id")
     private String bannerId;
