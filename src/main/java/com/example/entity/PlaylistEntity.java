@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tag")
+@Table(name = "playlist")
 @Getter
 @Setter
 public class PlaylistEntity extends IntegerBaseEntity {
@@ -24,6 +24,9 @@ public class PlaylistEntity extends IntegerBaseEntity {
 
     @Column(name = "order_num")
     private Integer orderNum;
+
+    @Column(name = "prt_id")
+    private Integer prtId;
 
     @Column(name = "channel_id")
     private String channelId;

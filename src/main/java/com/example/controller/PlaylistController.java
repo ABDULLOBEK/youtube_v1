@@ -37,6 +37,14 @@ public class PlaylistController {
         return ResponseEntity.ok(true);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_OWNER','ROLE_USER')")
+    @PutMapping("status/{id}")
+    public ResponseEntity<?> changeStatus(@RequestBody PlaylistDTO dto,
+                                 @PathVariable("id") Integer id){
+        Boolean response = playlistService.changeStatus(id, dto);
+        return ResponseEntity.ok(response);
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_OWNER','ROLE_USER','ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){

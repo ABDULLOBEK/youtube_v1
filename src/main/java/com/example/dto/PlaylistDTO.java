@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class PlaylistDTO extends IntegerBaseDTO {
@@ -17,5 +19,16 @@ public class PlaylistDTO extends IntegerBaseDTO {
     private PlaylistStatus status;
     private Integer orderNum;
     private String channelId;
+    private Integer prtId;
+//    id, name, description, publishedDate
 
+    public PlaylistDTO( Integer id, String name, String description, LocalDateTime createdDate) {
+        super(id, createdDate);
+        this.name = name;
+        this.description = description;
+    }
+
+    public PlaylistDTO() {
+        super();
+    }
 }

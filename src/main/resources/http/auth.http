@@ -7,25 +7,15 @@ Content-Type: application/json
   "password": "123412341"
 }
 
-### Registration
-POST localhost:8080/api/v1/auth/registration
-Content-Type:  application/json
-
-{ "name": "Temur",
-  "surname": "chort",
-  "email": "uytvbox2008@gmail.com",
-  "password": "12345678"
-}
-
 ### REGISTRAION
 POST http://localhost:8080/api/v1/auth/registration
 Content-Type: application/json
 
 {
-  "name": "Ali",
+  "name": "Abdu",
   "surname": "Aliyev",
-  "email": "myshukurov@gmail.com",
-  "password": "12345678",
+  "email": "navruzovabdullo00@gmail.com",
+  "password": "23232323",
   "role": "ROLE_ADMIN",
   "status": "REGISTRATION",
   "photoId": "1"
@@ -37,6 +27,6 @@ POST http://localhost:8080/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "myshukurov@gmail.com",
-  "password": "12345678"
+  "email": "navruzovabdullo00@gmail.com",
+  "password": "23232323"
 }
