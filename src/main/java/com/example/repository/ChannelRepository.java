@@ -1,8 +1,11 @@
 package com.example.repository;
 
-import com.example.dto.ChannelDTO;
 import com.example.entity.ChannelEntity;
+import com.example.enums.ChannelStatus;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,17 +20,38 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity, Integer>
     @Transactional
     @Modifying
     @Query("update ChannelEntity  as p set  p.name=:name,p.description=:description where p.id=:id")
-    int update(@Param("id") Integer id, @Param("name") String name, @Param("description") String description);
+    int update(@Param("id") String id, @Param("name") String name, @Param("description") String description);
+
+
+//    @Query(value = "select count(*) from channel where name =: name",nativeQuery = true)
+//    int findByName(@Param("name") String name);
+
+
+    @Transactional
+    @Modifying
+    @Query("update ChannelEntity  as p set  p.photoId=:photoId where p.id=:id")
+    int updatePhoto(@Param("id") String id, @Param("photoId") String photoId);
+
+    @Transactional
+    @Modifying
+    @Query("update ChannelEntity  as p set  p.bannerId=:bannerId where p.id=:id")
+    int updateBanner(@Param("id") String  id, @Param("bannerId") String bannerId);
+
+
+    Page<ChannelEntity> findAllBy(Pageable pageable);
+
+    @Transactional
+    @Modifying
+    @Query("update ChannelEntity  as p set  p.status=:status where p.id=:id")
+    int updateStatus(@Param("id") String  id,@Param("status") @NotNull(message = "Status is null!") ChannelStatus status);
+
+
+    Iterable<ChannelEntity> findAllByProfileId(Integer id);
 
     Optional<ChannelEntity> findByName(String name);
 
     @Transactional
     @Modifying
-    @Query("update ChannelEntity  as p set  p.photoId=:photoId where p.id=:id")
-    int updatePhoto(@Param("id") Integer id, @Param("photoId") String photoId);
-
-    @Transactional
-    @Modifying
-    @Query("update ChannelEntity  as p set  p.photoId=:photoId where p.id=:id")
-    int updateBanner(@Param("id") Integer id, @Param("bannerId") String bannerId);
+    @Query(value = "select name from ChannelEntity where ChannelEntity.id=:id",nativeQuery = true)
+    Optional<ChannelEntity> findById(@Param("id") String  id);
 }
