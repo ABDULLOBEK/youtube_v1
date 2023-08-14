@@ -26,9 +26,11 @@ public class SpringSecurityConfig {
             "/api/v1/auth/**",
             "/api/v1/category/**",
             /*"/api/v1/tag/**",*/
-            /*"/api/v1/attach/**",*/
+            "/api/v1/attach/**",
+            "/api/v1/channel/search/**",
+//            "/api/v1/channel/**",
             "/api/v1/emailHistory/**",
-            "/api/v1/profile/open/**"};
+            "/api/v1/profile/open/**",};
 
    /* @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -88,6 +90,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
                         .requestMatchers("/api/v1/attach/**").permitAll()
                         .requestMatchers("/api/v1/profile/**").permitAll()
+                        .requestMatchers("/api/v1/channel/search/**").permitAll()
                         .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
                         .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/profile/**").permitAll()

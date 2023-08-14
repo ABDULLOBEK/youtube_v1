@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -31,4 +33,7 @@ public class ChannelDTO {
 
     @NotBlank(message = "Photo profile_id")
     private String profile_id;
+
+    public ChannelDTO() {
+    }
 }
