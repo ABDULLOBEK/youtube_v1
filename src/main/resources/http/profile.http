@@ -1,11 +1,15 @@
-### Create student
-POST localhost:8080/api/v1/profile
+### Create profile
+POST http://localhost:8080/api/v1/profile/admin/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMTYzODcsImVtYWlsIjoibnVyYmVrYW1pbm92MTNAZ21haWwuY29tIiwiZXhwIjoxNjkyMDE5OTg3LCJpc3MiOiJZT1UgVFVCRSBQT1JUQUwifQ.Pe8QIlYl-yeUtk3g-TPonUTU7UoukSGqqT7d9Sj768on_L4II3-DaO-ESn2_xcT9483Z_kbuSfyaEpAzFcdddw
 
 {
-  "name": "my",
-  "surname": "sh",
-  "email": "myshukurov@gmail.com",
-  "password": "12345678",
-  "role": "ROLE_ADMIN"
+  "name": "Vlai",
+  "surname": "Valiyev",
+  "email": "Vali123@gmail.com",
+  "password": "12345678"
 }
+
+###Get detail
+GET http://localhost:8080/api/v1/profile/get
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMjAxMTcsImVtYWlsIjoibnVyYmVrYW1pbm92MTNAZ21haWwuY29tIiwiZXhwIjoxNjkyMDMwOTE3LCJpc3MiOiJZT1UgVFVCRSBQT1JUQUwifQ.PQnc-WT9exeqVcJBvdxIcvUC6UR5e5eOWVWVanKyCa6KxigTuGCHHO0-szdw2YzEh-7Yv6gNHCNqMymdysLC7w

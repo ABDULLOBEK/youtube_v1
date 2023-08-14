@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-    private ProfileEntity profile;
+    private final ProfileEntity profile;
 
     public CustomUserDetails(ProfileEntity profile) {
         this.profile = profile;
