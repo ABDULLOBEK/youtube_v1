@@ -1,22 +1,23 @@
 ### Create channel
 POST localhost:8081/api/v1/channel
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMjIyOTYsImVtYWlsIjoianJhZXZAZ21haWwuY29tIiwiZXhwIjoxNjkyMDI1ODk2LCJpc3MiOiJZT1UgVFVCRSBQT1JUQUwifQ.se_g4quh5J2in79I1CACCJEABF3g2sS8B6WJ7NfNtoRNBYeyk6GA6ucyEzrvv6_ABQ2fyDK55WkL_QfneBkdBw
 
 {
-  "name": "aaa Channel",
+  "name": "66666 Channel",
   "description": "sfadf 54df5dsc dfd",
   "photoId": "5f4f7920-8b3a-4564-826b-367330771633",
   "bannerId": "5f4f7920-8b3a-4564-826b-367330771633"
 }
 
 ### Upadte channel
-PUT localhost:8081/api/v1/channel/update/2
+PUT localhost:8081/api/v1/channel/update/1bd20c63-14d2-47cf-b3a3-9ee3dfa784ef
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MTkzOTQsImVtYWlsIjoibXlzaHVrdXJvdkBnbWFpbC5jb20iLCJleHAiOjE2OTE5MjI5OTQsImlzcyI6IllPVSBUVUJFIFBPUlRBTCJ9.WzbcF5XCTuSt1tbDeJWLVhLX6LXWK8OuTG6YfP6ZkRWhmNO-Yg0HsrKNrio_9VQgCtTB7GdMG9RvsmfneUeBoA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MzMxOTYsImVtYWlsIjoibXlzaHVrdXJvdkBnbWFpbC5jb20iLCJleHAiOjE2OTE5MzY3OTYsImlzcyI6IllPVSBUVUJFIFBPUlRBTCJ9.M39BsWtOOre-Crcibl6-KjpfGCXtomt7lr3GdkPNkVPnmOKi-NXqktIXcjWTsCR0H8R8EKO5tc6TcQZq4nzDRw
 
 {
   "name": "Update Channel",
-  "photoId": "1734f6ea-0a0d-4937-bf62-b0914f31d116"
+  "description": "88888ea-0a0d-4937-bf62-b0914f31d116"
 }
 
 ### Update Channel photo ( USER and OWNER)
@@ -36,3 +37,23 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTE5MTkzOTQsImVtYWlsIjoib
 {
   "bannerId": "1734f6ea-0a0d-4937-bf62-b0914f31d116"
 }
+
+### Get by pages
+GET localhost:8081/api/v1/channel/pagination?page=1&size=5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMTc1NDMsImVtYWlsIjoidW1pbnR1cmdhbm92QGdtYWlsLmNvbSIsImV4cCI6MTY5MjAyMTE0MywiaXNzIjoiWU9VIFRVQkUgUE9SVEFMIn0.guh1Ou_EcQSdhIpLEJWCZOnDCd2exRXKxaz4yfrolMRtlMlvIoTo0MXqDJeXzQgjVC40whMyFbhoIPAsiJvI8g
+
+### GET channel by ID
+GET localhost:8081/api/v1/channel/search/d34269ea-4e6f-4e8a-9f69-b82d28597348
+
+### Change Channel Status (ADMIN,USER and OWNER)
+PUT localhost:8081/api/v1/channel/update/status/d34269ea-4e6f-4e8a-9f69-b82d28597348
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMjIyOTYsImVtYWlsIjoianJhZXZAZ21haWwuY29tIiwiZXhwIjoxNjkyMDI1ODk2LCJpc3MiOiJZT1UgVFVCRSBQT1JUQUwifQ.se_g4quh5J2in79I1CACCJEABF3g2sS8B6WJ7NfNtoRNBYeyk6GA6ucyEzrvv6_ABQ2fyDK55WkL_QfneBkdBw
+
+{
+  "status": "BLOCK"
+}
+
+### GET channel list
+GET localhost:8081/api/v1/channel/all
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIwMjIyOTYsImVtYWlsIjoianJhZXZAZ21haWwuY29tIiwiZXhwIjoxNjkyMDI1ODk2LCJpc3MiOiJZT1UgVFVCRSBQT1JUQUwifQ.se_g4quh5J2in79I1CACCJEABF3g2sS8B6WJ7NfNtoRNBYeyk6GA6ucyEzrvv6_ABQ2fyDK55WkL_QfneBkdBw
