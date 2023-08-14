@@ -4,6 +4,7 @@ import com.example.dto.base.IntegerBaseDTO;
 import com.example.dto.base.StringBaseDTO;
 import com.example.entity.ChannelEntity;
 import com.example.enums.PlaylistStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaylistDTO extends IntegerBaseDTO {
 
     private String name;
