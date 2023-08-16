@@ -34,31 +34,31 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-        protected void doFilterInternal(HttpServletRequest request,
-                HttpServletResponse response,
-                FilterChain filterChain) throws ServletException, IOException {
-            final String authHeader = request.getHeader("Authorization");
-            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.setHeader("Message", "Token Not Found.");
-                return;
-            }
-            String token = authHeader.substring(7);
-            JwtDTO jwtDto;
-            try {
-                jwtDto = JWTUtil.decode(token);
-            } catch (UnAuthorizedException e) {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.setHeader("Message", e.getMessage());
-                return;
-            }
-            UserDetails userDetails = userDetailsService.loadUserByUsername(jwtDto.getEmail());
-            UsernamePasswordAuthenticationToken
-                    authentication = new UsernamePasswordAuthenticationToken(userDetails,
-                    null, userDetails.getAuthorities());
-            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            filterChain.doFilter(request, response);
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        final String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setHeader("Message", "Token Not Found.");
+            return;
         }
+        String token = authHeader.substring(7);
+        JwtDTO jwtDto;
+        try {
+            jwtDto = JWTUtil.decode(token);
+        } catch (UnAuthorizedException e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setHeader("Message", e.getMessage());
+            return;
+        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(jwtDto.getEmail());
+        UsernamePasswordAuthenticationToken
+                authentication = new UsernamePasswordAuthenticationToken(userDetails,
+                null, userDetails.getAuthorities());
+        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        filterChain.doFilter(request, response);
     }
+}
 

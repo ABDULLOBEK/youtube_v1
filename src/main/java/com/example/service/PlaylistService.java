@@ -3,7 +3,6 @@ package com.example.service;
 import com.example.config.CustomUserDetails;
 import com.example.dto.PlaylistDTO;
 import com.example.entity.PlaylistEntity;
-import com.example.enums.PlaylistStatus;
 import com.example.mapper.PlayListInfoIMapper;
 import com.example.repository.PlaylistRepository;
 import com.example.util.SpringSecurityUtil;
