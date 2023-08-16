@@ -1,7 +1,6 @@
 package com.example.util;
 
 import com.example.dto.JwtDTO;
-import com.example.enums.ProfileRole;
 import com.example.exp.UnAuthorizedException;
 import io.jsonwebtoken.*;
 
@@ -10,8 +9,8 @@ import java.util.Date;
 public class JWTUtil {
     public static final String secretKey = "!maz234^gikey";
 
-    public static final int tokenLiveTime = 1000 * 3600*3; // 1 hour
-    public static final int emailTokenLiveTime = 1000*3600*24; // 1 day
+    public static final long tokenLiveTime = 1000*3600*24*10; // 10day //TODO ABDULLO 1 hour
+    public static final long emailTokenLiveTime = 1000*3600*24 *10; // 10 day //TODO ABDULLO 1 day
 
     public static String encode(String email) {
         JwtBuilder jwtBuilder = Jwts.builder();
@@ -21,7 +20,7 @@ public class JWTUtil {
         jwtBuilder.claim("email", email);
 
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
-        jwtBuilder.setIssuer("YOU TUBE PORTAL");
+        jwtBuilder.setIssuer("YOUTUBE PORTAL");
         return jwtBuilder.compact();
     }
     public static JwtDTO decode(String token) {
@@ -49,7 +48,7 @@ public class JWTUtil {
         jwtBuilder.claim("id", profileId);
 
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (emailTokenLiveTime)));
-        jwtBuilder.setIssuer("YOU TUBE PORTAL");
+        jwtBuilder.setIssuer("YOUTUBE PORTAL");
         return jwtBuilder.compact();
     }
 

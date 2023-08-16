@@ -28,7 +28,6 @@ public class SpringSecurityConfig {
             /*"/api/v1/tag/**",*/
             /*"/api/v1/attach/**",*/
             "/api/v1/emailHistory/**",
-            "/api/v1/video/open/**",
             "/api/v1/profile/open/**",
             "/api/v1/video/open/**"};
 
@@ -86,14 +85,14 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authorization (ROLE)
         http.authorizeHttpRequests((c) ->
-                c.requestMatchers(AUTH_WHITELIST).permitAll()
+                        c.requestMatchers(AUTH_WHITELIST).permitAll()
 //                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
 //                        .requestMatchers("/api/v1/attach/**").permitAll()
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
-//                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
+//                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO ABDULLO
 //                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
         ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);

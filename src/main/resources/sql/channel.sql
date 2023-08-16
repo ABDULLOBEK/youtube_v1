@@ -1,1 +1,1 @@
-update channelset description = :description,    name        = :namewhere id = :id;
+update channelset description = :description,    name        = :namewhere id = :id;
