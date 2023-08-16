@@ -31,7 +31,7 @@ public class AttachEntity{
     private String extension;
 
     @Column(name = "duration")
-    private String duration;
+    private String duration;//TODO ABDULLO
 
     @Column(name = "created_date")
     private LocalDateTime createdData;

@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled  = true)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig {
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
@@ -86,14 +86,14 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authorization (ROLE)
         http.authorizeHttpRequests((c) ->
-                c.requestMatchers(AUTH_WHITELIST).permitAll()
+                        c.requestMatchers(AUTH_WHITELIST).permitAll()
 //                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
 //                        .requestMatchers("/api/v1/attach/**").permitAll()
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
 //                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO ABDULLO
 //                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
         ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
