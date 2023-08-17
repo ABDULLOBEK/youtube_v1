@@ -1,0 +1,1 @@
+--db init--INCREASE VIDEO COUNT FUNCTION & TRIGGERcreate or replace function increase_video_views()    returns trigger as$$BEGIN    update video    set view_count = view_count + 1    where id = :id;END;$$ language plpgsql;create trigger increase_video_views_trigger    after insert    on video_watched    for each rowexecute function increase_video_views();

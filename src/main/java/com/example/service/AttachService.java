@@ -173,7 +173,7 @@ public class AttachService {
         dto.setOriginalName(entity.getOriginalName());
         dto.setExtension(entity.getExtension());
         dto.setSize(entity.getSize());
-        dto.setCreatedData(entity.getCreatedData());
+        dto.setCreatedData(entity.getCreatedDate());
         return dto;
     }
 
