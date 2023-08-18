@@ -58,7 +58,7 @@ public class ChannelController {
 
     }
     @GetMapping("/search/{id}")
-    public ResponseEntity<?> search(@PathVariable("id") String id){
+    public ResponseEntity<ChannelDTO> search(@PathVariable("id") String id){
         return ResponseEntity.ok(channelService.search(id));
     }
 
