@@ -60,7 +60,7 @@ public class ChannelService {
 
     public PageImpl<ChannelDTO> pagination(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<ChannelEntity> pageObj = channelRepository.findAllBy(pageable);
+        Page<ChannelEntity> pageObj = channelRepository.findAll(pageable);
 
         List<ChannelEntity> entityList = pageObj.getContent();
         Long totalCount = pageObj.getTotalElements();
