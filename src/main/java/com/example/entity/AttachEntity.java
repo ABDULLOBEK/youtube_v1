@@ -14,9 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "attach")
 @Getter
 @Setter
-public class AttachEntity{
-    @Id
-    private String id;
+public class AttachEntity extends StringBaseEntity{
 
     @Column(name = "original_name")
     private String originalName;
@@ -31,13 +29,6 @@ public class AttachEntity{
     private String extension;
 
     @Column(name = "duration")
-    private String duration;//TODO ABDULLO
-
-    @Column(name = "created_date")
-    private LocalDateTime createdData;
-
-
-
-
+    private String duration;
 
 }

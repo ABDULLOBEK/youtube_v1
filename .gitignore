@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 /src/main/resources/text
-/src/main/resources/application-abdullo.properties
-/src/main/resources/application-urazgali.properties
-/src/main/resources/application-dev.properties
+
+## for all users
+# Spring Boot profile-specific properties
+src/main/resources/application-*.properties

@@ -32,7 +32,7 @@ public class ProfileDTO {
     @Size(min = 8, message = "password should be minimum 8!")
     private String password;
 
-    @NotBlank(message = "Photo required")
+//    @NotBlank(message = "Photo required")
     private AttachDTO photo;
     private String photoUrl;
 
