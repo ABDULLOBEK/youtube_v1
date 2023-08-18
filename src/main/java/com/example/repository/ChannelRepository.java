@@ -35,5 +35,10 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity, Integer>
 
     Page<ChannelEntity> findAll(Pageable pageable);
 
-    Optional<ChannelEntity> findByProfileId(Integer id);
+
+    Page<ChannelEntity> findAllBy(Pageable pageable);
+
+    Iterable<ChannelEntity> findAllByProfileId(Integer id);
+
+    Optional<ChannelEntity> findById(String id);
 }
