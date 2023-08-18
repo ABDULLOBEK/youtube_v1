@@ -1,11 +1,8 @@
 package com.example.service;
 
 import com.example.config.CustomUserDetails;
-import com.example.dto.ApiResponse;
 import com.example.dto.ChannelDTO;
 import com.example.entity.ChannelEntity;
-import com.example.entity.PlaylistEntity;
-import com.example.entity.ProfileEntity;
 import com.example.enums.ChannelStatus;
 import com.example.exp.AppMethodNotAllowedException;
 import com.example.repository.ChannelRepository;
@@ -28,8 +25,6 @@ public class ChannelService {
     public ChannelDTO add(ChannelDTO dto) {
         Optional<ChannelEntity> optionalProfile = channelRepository.findByName(dto.getName());
         if (optionalProfile.isPresent()) {
-//       int channelEntity = channelRepository.findByName(dto.getName());
-//        if (channelEntity!=1) {
             throw new AppMethodNotAllowedException();
         }
 
@@ -65,7 +60,7 @@ public class ChannelService {
 
     public PageImpl<ChannelDTO> pagination(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<ChannelEntity> pageObj = channelRepository.findAllBy(pageable);
+        Page<ChannelEntity> pageObj = channelRepository.findAll(pageable);
 
         List<ChannelEntity> entityList = pageObj.getContent();
         Long totalCount = pageObj.getTotalElements();
@@ -87,17 +82,9 @@ public class ChannelService {
         return dto;
     }
 
-    private ChannelEntity toEntity(ChannelDTO dto) {
-        ChannelEntity entity = new ChannelEntity();
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        return entity;
-    }
-
     public ChannelDTO search(String id) {
         Optional<ChannelEntity> entity = channelRepository.findById(id);
         if (entity.isPresent()) {
-//            throw new AppBadRequestException("Email already exists");
             throw new AppMethodNotAllowedException();
         }
         return toDTO(entity);
@@ -114,15 +101,13 @@ public class ChannelService {
     }
 
     public Boolean statusUpdate(String id,ChannelDTO dto) {
-//        @NotNull(message = "Status is null!") ChannelStatus status = dto.getStatus();
-//        int affectedRows = channelRepository.updateStatus(id,status);
-//        return affectedRows == 1;
+        @NotNull(message = "Status is null!") ChannelStatus status = dto.getStatus();
         Optional<ChannelEntity> entity = channelRepository.findById(id);
         if(entity.isPresent()){
-            if (entity.get().getStatus().equals(dto.getStatus())){
+            if (entity.get().getStatus().equals(status)){
                 return false;
             }else {
-                entity.get().setStatus(dto.getStatus());
+                entity.get().setStatus(status);
             }
         }
         channelRepository.save(entity.get());

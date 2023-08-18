@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ChannelRepository extends JpaRepository<ChannelEntity, Integer> {
+public interface ChannelRepository extends JpaRepository<ChannelEntity, String> {
 
     @Transactional
     @Modifying
@@ -36,4 +36,6 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity, Integer>
     Page<ChannelEntity> findAll(Pageable pageable);
 
     Optional<ChannelEntity> findByProfileId(Integer id);
+
+    Iterable<ChannelEntity> findAllByProfileId(Integer id);
 }
