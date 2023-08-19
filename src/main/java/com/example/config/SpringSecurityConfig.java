@@ -29,6 +29,9 @@ public class SpringSecurityConfig {
             /*"/api/v1/attach/**",*/
             "/api/v1/emailHistory/**",
             "/api/v1/profile/open/**",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
             "/api/v1/video/open/**"};
 
    /* @Bean

@@ -36,3 +36,4 @@ build/
 ## for all users
 # Spring Boot profile-specific properties
 src/main/resources/application-*.properties
+src/main/resources/talablar (*).txt
