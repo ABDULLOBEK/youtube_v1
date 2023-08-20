@@ -29,6 +29,7 @@ public class SpringSecurityConfig {
             /*"/api/v1/attach/**",*/
             "/api/v1/emailHistory/**",
             "/api/v1/profile/open/**",
+//            "/api/v1/comment/close/**",
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/swagger-ui/**",
@@ -89,12 +90,12 @@ public class SpringSecurityConfig {
         // authorization (ROLE)
         http.authorizeHttpRequests((c) ->
                 c.requestMatchers(AUTH_WHITELIST).permitAll()
-                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
-                        .requestMatchers("/api/v1/attach/**").permitAll()
-                        .requestMatchers("/api/v1/profile/**").permitAll()
-                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
-                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/profile/**").permitAll()
+//                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
+//                        .requestMatchers("/api/v1/attach/**").permitAll()
+//                        .requestMatchers("/api/v1/profile/**").permitAll()
+//                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
+//                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
+//                        .requestMatchers("/api/v1/profile/**").permitAll()
                         .anyRequest().authenticated()
         ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
