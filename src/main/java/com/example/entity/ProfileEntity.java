@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import com.example.entity.Base.IntegerBaseEntity;
+import com.example.enums.Language;
 import com.example.enums.ProfileRole;
 import com.example.enums.ProfileStatus;
 import jakarta.persistence.*;
@@ -42,4 +43,8 @@ public class ProfileEntity extends IntegerBaseEntity {
 
     @Column(name = "prtId")
     private Integer prtId;
+
+    @Column(name = "lang")
+    @Enumerated(EnumType.STRING)
+    private Language language;
 }
