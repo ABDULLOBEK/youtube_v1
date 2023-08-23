@@ -2,7 +2,6 @@ package com.example;
 
 import com.example.dto.CardDTO;
 import com.example.dto.TaskDTO;
-import com.example.enums.CardStatus;
 import com.example.enums.TaskStatus;
 import com.example.service.CardService;
 import com.example.service.TaskService;
@@ -51,5 +50,25 @@ class YoutubeApplicationTests {
 //        card.setStatus(CardStatus.ACTIVE);
 //        card.setProfileId("0640c560-d3de-4977-8744-e0fc04daae23");
         cardService.create(card);
+    }
+
+    @Test
+    void updateCardBalance() {
+        cardService.updateBalance("f05ee802-95ec-439b-9ecd-f146a39dfc92", -20000);
+    }
+
+    @Test
+    void updateCardStatus() {
+        cardService.updateStatus("f05ee802-95ec-439b-9ecd-f146a39dfc92");
+    }
+
+    @Test
+    void deleteCard() {
+        cardService.delete("f05ee802-95ec-439b-9ecd-f146a39dfc92");
+    }
+
+    @Test
+    void getMyCards() {
+        cardService.getMyCards();
     }
 }
