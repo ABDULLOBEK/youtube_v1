@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.settings;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;

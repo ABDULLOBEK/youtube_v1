@@ -3521,7 +3521,7 @@ values ('9aca3cc0-2560-494c-bc09-10cc599f938f','First channel','5f4f7920-8b3a-45
 	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:188)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:196)
 	at org.flywaydb.core.Flyway.migrate(Flyway.java:140)
-	at com.example.service.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
+	at com.example.service.settings.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
 	... 5 common frames omitted
 Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1.1__insert_channel.sql failed
@@ -3916,7 +3916,7 @@ values ('9aca3cc0-2560-494c-bc09-10cc599f938f','First channel','5f4f7920-8b3a-45
 	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:188)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:196)
 	at org.flywaydb.core.Flyway.migrate(Flyway.java:140)
-	at com.example.service.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
+	at com.example.service.settings.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
 	... 5 common frames omitted
 Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1.1__insert_channel.sql failed
@@ -4033,7 +4033,7 @@ values ('9aca3cc0-2560-494c-bc09-10cc599f938f','First channel','5f4f7920-8b3a-45
 	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:188)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:196)
 	at org.flywaydb.core.Flyway.migrate(Flyway.java:140)
-	at com.example.service.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
+	at com.example.service.settings.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
 	... 5 common frames omitted
 Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1.1__insert_channel.sql failed
@@ -4169,7 +4169,7 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:146)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:196)
 	at org.flywaydb.core.Flyway.migrate(Flyway.java:140)
-	at com.example.service.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
+	at com.example.service.settings.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
 	... 5 common frames omitted
 17 08 2023 - 16:27:32.791 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
@@ -4226,7 +4226,7 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:146)
 	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:196)
 	at org.flywaydb.core.Flyway.migrate(Flyway.java:140)
-	at com.example.service.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
+	at com.example.service.settings.CommandLineRunnerService.run(CommandLineRunnerService.java:18)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
 	... 5 common frames omitted
 17 08 2023 - 16:29:29.103 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
