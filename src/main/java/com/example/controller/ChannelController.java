@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.dto.ApiResponse;
 import com.example.dto.ChannelDTO;
 import com.example.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ public class ChannelController {
     @Autowired
     private ChannelService channelService;
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PostMapping("")
-    public ResponseEntity<?> create(@RequestBody ChannelDTO dto){
-            return ResponseEntity.ok(channelService.add(dto));
+    @PostMapping("/create")
+    public ResponseEntity<ApiResponse> create(@RequestBody ChannelDTO dto){
+            return ResponseEntity.status(HttpStatus.CREATED).body(channelService.add(dto));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_OWNER','ROLE_USER')")

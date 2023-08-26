@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.config.CustomUserDetails;
+import com.example.dto.ApiResponse;
 import com.example.dto.ChannelDTO;
 import com.example.entity.ChannelEntity;
 import com.example.enums.ChannelStatus;
@@ -22,23 +23,25 @@ public class ChannelService {
     @Autowired
     private ChannelRepository channelRepository;
 
-    public ChannelDTO add(ChannelDTO dto) {
+    public ApiResponse add(ChannelDTO dto) {
         Optional<ChannelEntity> optionalProfile = channelRepository.findByName(dto.getName());
         if (optionalProfile.isPresent()) {
-            throw new AppMethodNotAllowedException();
+//            throw new AppMethodNotAllowedException();
+            return new ApiResponse(false, "THIS NAME ALREADY TAKEN");
         }
+        CustomUserDetails customUserDetails = SpringSecurityUtil.getCurrentUser();
 
         ChannelEntity entity = new ChannelEntity();
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPhotoId(dto.getPhotoId());
         entity.setBannerId(dto.getBannerId());
-        CustomUserDetails customUserDetails = SpringSecurityUtil.getCurrentUser();
         entity.setProfileId(customUserDetails.getProfile().getId());
-        System.out.println(entity.getProfileId());
+//        System.out.println(entity.getProfileId());
         channelRepository.save(entity);
         dto.setId(entity.getId());
-        return dto;
+        dto.setStatus(entity.getStatus());
+        return new ApiResponse(true, dto);
     }
 
 

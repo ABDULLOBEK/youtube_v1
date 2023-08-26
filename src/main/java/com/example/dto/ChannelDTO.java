@@ -19,20 +19,17 @@ public class ChannelDTO {
     @NotBlank(message = "Name required")
     private String name;
 
-    @NotBlank(message = "Photo required")
-    private String photoId;
-
     @NotBlank(message = "Description required")
     private String description;
 
-    @NotNull(message = "Status is null!")
+    @NotBlank(message = "Status required")
     private ChannelStatus status;
 
     @NotBlank(message = "Photo required")
-    private String bannerId;
+    private String photoId;
 
-    @NotBlank(message = "Photo profile_id")
-    private String profile_id;
+    @NotBlank(message = "Photo required")
+    private String bannerId;
 
     public ChannelDTO() {
     }
