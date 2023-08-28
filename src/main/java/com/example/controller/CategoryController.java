@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CategoryDTO;
+import com.example.enums.Language;
 import com.example.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,12 @@ public class CategoryController {
     @GetMapping("/all")
     public List<CategoryDTO> all(){
         return categoryService.getAll();
+    }
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/open/get-by-id/{id}")
+    public CategoryDTO getById(@PathVariable Integer id,
+                                 @RequestParam(defaultValue = "en") Language lang){
+        return categoryService.getById(id, lang);
     }
 
 }

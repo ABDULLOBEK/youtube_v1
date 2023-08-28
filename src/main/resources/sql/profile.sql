@@ -10,3 +10,4 @@ update profile as p set p.name = 'Vali', p.surname = 'Valiyev' where p.id = 1;
 -- Get Detail Query
 select * from profile as p where p.id = 1;
 
+select * from profile;
