@@ -17,12 +17,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled  = true)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig {
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
 
-    public static String[] AUTH_WHITELIST = {
+    public static String [] AUTH_WHITELIST = {
             "/api/v1/auth/**",
             "/api/v1/category/**",
             "/api/v1/category/open",
@@ -33,7 +33,8 @@ public class SpringSecurityConfig {
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/swagger-ui/**",
-            "/api/v1/video/open/**"};
+            "/api/v1/video/open/**",
+            "/api/v1/playlist-video/open/**"};
 
    /* @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -89,14 +90,14 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authorization (ROLE)
         http.authorizeHttpRequests((c) ->
-                c.requestMatchers(AUTH_WHITELIST).permitAll()
+                        c.requestMatchers(AUTH_WHITELIST).permitAll()
 //                        .requestMatchers("/api/v1/attach/admin/**").hasAnyRole("ADMIN")
 //                        .requestMatchers("/api/v1/attach/**").permitAll()
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
 //                        .requestMatchers("/api/v1/tag/**").hasAnyRole("ADMIN")//TODO
 //                        .requestMatchers("/api/v1/profile/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/api/v1/profile/**").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
         ).addFilterAfter(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
