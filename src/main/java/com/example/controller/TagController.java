@@ -5,8 +5,12 @@ import com.example.dto.TagDTO;
 import com.example.entity.TagEntity;
 import com.example.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +31,7 @@ public class TagController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
+    @CachePut(cacheNames = "tag", key = "#id")
     public ResponseEntity<?> put(@RequestBody TagDTO dto,
                                  @PathVariable("id") Integer id){
         tagService.update(id, dto);
@@ -35,6 +40,7 @@ public class TagController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
+    @CacheEvict(cacheNames = "tag", key = "#id")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         String  response = tagService.delete(id);
         if(response.length()>0){
@@ -48,4 +54,8 @@ public class TagController {
     public List<TagDTO> all(){
         return tagService.getAll();
     }
+
+    @Scheduled(cron = "0,30 * * * * ?")
+    @CacheEvict(value = "tag", allEntries = true)
+    public void deleteAll() {}
 }

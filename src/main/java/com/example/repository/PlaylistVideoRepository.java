@@ -1,0 +1,1 @@
+package com.example.repository;import com.example.entity.PlaylistVideoEntity;import org.springframework.data.jpa.repository.JpaRepository;public interface PlaylistVideoRepository extends JpaRepository<PlaylistVideoEntity, Integer> {}

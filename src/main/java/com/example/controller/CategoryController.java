@@ -46,7 +46,6 @@ public class CategoryController {
     public List<CategoryDTO> all(){
         return categoryService.getAll();
     }
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/open/get-by-id/{id}")
     public CategoryDTO getById(@PathVariable Integer id,
                                  @RequestParam(defaultValue = "en") Language lang){
