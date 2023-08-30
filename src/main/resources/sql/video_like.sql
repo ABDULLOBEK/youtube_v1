@@ -3,35 +3,31 @@ create or replace function video_like_function()
 $$
 begin
     if tg_op = 'insert' then
-        if new.has_liked = 'LIKE' then
+        if new.has_like = 'LIKE' then
             update video v
             set like_count = like_count + 1
             where v.id = new.video_id;
-        elseif new.has_liked = 'DISLIKE' then
+        elseif new.has_like = 'DISLIKE' then
             update video v
             set dislike_count = dislike_count + 1
             where v.id = new.video_id;
         end if;
     elseif tg_op = 'update' then
-        if new.has_liked = 'LIKE' and old.has_liked = 'DISLIKE' then
+        if new.has_like = 'LIKE' and old.has_like = 'DISLIKE' then
             update video v
-            set like_count = like_count + 1
+            set like_count    = like_count + 1,
+                dislike_count = dislike_count - 1
             where v.id = new.video_id;
+        elseif new.has_like = 'DISLIKE' and old.has_like = 'LIKE' then
             update video v
-            set dislike_count = dislike_count - 1
+            set dislike_count = dislike_count + 1,
+                like_count    = like_count - 1
             where v.id = new.video_id;
-        elseif new.has_liked = 'DISLIKE' and old.has_liked = 'LIKE' then
-            update video v
-            set like_count = like_count - 1
-            where v.id = new.video_id;
-            update video v
-            set dislike_count = dislike_count + 1
-            where v.id = new.video_id;
-        elseif new.has_liked = 'DISLIKE' and old.has_liked = 'DISLIKE' then
+        elseif new.has_like = 'DISLIKE' and old.has_like = 'DISLIKE' then
             update video v
             set dislike_count = dislike_count - 1
             where v.id = new.video_id;
-        elseif new.has_liked = 'LIKE' and old.has_liked = 'LIKE' then
+        elseif new.has_like = 'LIKE' and old.has_like = 'LIKE' then
             update video v
             set like_count = like_count - 1
             where v.id = new.video_id;
