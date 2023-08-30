@@ -77,4 +77,12 @@ public class ReportService {
             return new ApiResponse(true, resourceBundleService.getMessage("item.not.found", profile.getLanguage()));
         }
     }
+
+    public List<ReportDTO> getListById(Integer id) {
+        List<ReportEntity> reportDTOList =reportRepository.findAllByPrtId(id);
+        return reportDTOList
+                .stream()
+                .map(this::TO_DTO)
+                .toList();
+    }
 }

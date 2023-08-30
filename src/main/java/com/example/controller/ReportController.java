@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.ApiResponse;
 import com.example.dto.ReportDTO;
+import com.example.service.ReportService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,16 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/report")
-@Tag(name = "TAG CONTROLLER #️⃣", description = "this api used for tag")
+@Tag(name = "REPORT CONTROLLER #️⃣", description = "this api used for report")
 public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    @Operation(summary = "create tag ➕", description = "this api used for tag creation")
+    @Operation(summary = "create report ➕", description = "this api used for report creation")
     @PostMapping("/close/ceate")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<ApiResponse> create(@Valid @RequestBody ReportDTO dto) {
@@ -35,7 +37,7 @@ public class ReportController {
                     .body(response);
         }
     }
-    @Operation(summary = "paging tags 📄#️⃣", description = "this api used for paging tags")
+    @Operation(summary = "paging reports 📄#️⃣", description = "this api used for paging reports")
     @GetMapping("/close/paging")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Page<ReportDTO>> paging(@RequestParam(defaultValue = "0") Integer page,
@@ -43,7 +45,14 @@ public class ReportController {
         Page<ReportDTO> reportDTOPage = reportService.paging(page, size);
         return ResponseEntity.ok(reportDTOPage);
     }
-    @Operation(summary = "remove tag ❌", description = "this api used for remove tag")
+
+    @Operation(summary = "get list reports 📄#️⃣", description = "this api used for get list reports")
+    @GetMapping("/close/list-by-profile/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ReportDTO>> getListById(@PathVariable Integer id) {
+        return ResponseEntity.ok(reportService.getListById(id));
+    }
+    @Operation(summary = "remove report ❌", description = "this api used for remove report")
     @DeleteMapping("/close/delete/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<ApiResponse> remove(@PathVariable String id) {
@@ -51,7 +60,7 @@ public class ReportController {
         if (response.getStatus()) {
             return ResponseEntity
 //                    .status(HttpStatus.NO_CONTENT)
-//                    .body(response);
+//                    .body( response);
                     .ok(response);
         } else {
             return ResponseEntity
