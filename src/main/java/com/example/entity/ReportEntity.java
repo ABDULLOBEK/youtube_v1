@@ -20,13 +20,13 @@ public class ReportEntity extends StringBaseEntity {
     @Column(name = "channel_id")
     private String channelId;
     @ManyToOne
-    @JoinColumn(name = "channel_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "channel_id", insertable = false, updatable = false)
     private ChannelEntity channelEntity;
 
     @Column(name = "video_id")
     private String videoId;
     @ManyToOne
-    @JoinColumn(name = "video_id", referencedColumnName = "id", updatable = false, insertable = false)
+    @JoinColumn(name = "video_id",  updatable = false, insertable = false)
     private VideoEntity videoEntity;
 
     @Column(name = "video_type")
