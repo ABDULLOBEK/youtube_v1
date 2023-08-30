@@ -1,13 +1,12 @@
 package com.example.controller;
 
-import com.example.dto.CategoryDTO;
 import com.example.dto.TagDTO;
 import com.example.entity.TagEntity;
 import com.example.service.TagService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,7 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/tag")
 public class TagController {
@@ -43,7 +42,7 @@ public class TagController {
     @CacheEvict(cacheNames = "tag", key = "#id")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         String  response = tagService.delete(id);
-        if(response.length()>0){
+        if(!response.isEmpty()){
             return ResponseEntity.ok("Tag Deleted");
         }
         return ResponseEntity.badRequest().body("Tag not found");
@@ -55,7 +54,9 @@ public class TagController {
         return tagService.getAll();
     }
 
-    @Scheduled(cron = "0,30 * * * * ?")
+    @Scheduled(cron = "0 30 0 0 0 0")
     @CacheEvict(value = "tag", allEntries = true)
-    public void deleteAll() {}
+    void cleanCaches() {
+        log.info("cache tag cleared");
+    }
 }
