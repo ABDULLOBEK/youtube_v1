@@ -38,3 +38,4 @@ build/
 src/main/resources/application-*.properties
 src/main/resources/talablar (*).txt
 /attaches/
+/src/main/resources/web/
