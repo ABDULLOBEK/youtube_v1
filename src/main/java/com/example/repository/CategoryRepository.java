@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Integer> {
     @Transactional
@@ -15,4 +17,5 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Intege
     @Query("update CategoryEntity  as r set  r.name=:name where r.id=:id")
     int update(@Param("id") Integer id, @Param("name") String name);
 
+    Optional<CategoryEntity> findByName(String s);
 }
