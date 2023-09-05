@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -147,4 +148,19 @@ public class CategoryTestUtil {
         Optional<CategoryEntity> optional = categoryRepository.findByName("Category_uz 1");
         Assertions.assertThat(optional).isPresent();
     }
+
+    @Test
+    public void itShouldThrowDataBaseException() {
+        // given
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setCreatedDate(LocalDateTime.now());
+        categoryEntity.setVisible(true);
+        categoryEntity.setName(null);
+        // when
+        // then
+        Assertions.assertThatThrownBy(() -> {
+            categoryRepository.save(categoryEntity);
+        }).isInstanceOf(DataIntegrityViolationException.class);
+    }
+
 }

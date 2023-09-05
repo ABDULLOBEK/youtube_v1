@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <style>
+        input {
+            padding: 5px;
+        }
+        form {
+            /*margin-left: 50%;*/
+        }
+    </style>
+</head>
+<body>
+<form action="http://localhost:8080/api/v1/auth/login" method="POST">
+    <label for="username">LOGIN
+        <br>
+        <input type="email" name="username" id="username" required minlength="6" placeholder="user@gmail.com">
+        <input type="password" name="password" id="password" required minlength="6" placeholder="123mazgi">
+    </label>
+   <br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
