@@ -34,7 +34,11 @@ public class SpringSecurityConfig {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/api/v1/video/open/**",
-            "/api/v1/playlist-video/open/**"};
+            "/api/v1/playlist-video/open/**",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-ui/** ",
+    };
 
    /* @Bean
     public AuthenticationProvider authenticationProvider() {
